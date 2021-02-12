@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Inicio</title>
+</head>
+<body>
+<div class="container">
+    <div class="col-8">
+<h1 class="text-center">Inicio</h1>
+
+<br/>
+
+
+
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    </thead>
+
+    <tr th:each="persona : ${personas}">
+        <td th:text="${persona.id}">Mostrar id</td>
+
+        <td th:text="${persona.nombre}">Mostrar Nombre</td>
+
+        <td th:text="${persona.apellido}">Mostrar Apellido</td>
+
+        <td th:text="${persona.email}"> Mostrar email</td>
+
+        <td th:text="${persona.telefono}"> Mostrar telefono</td>
+
+        <td><a th:href="@{/editar/} + ${persona.Id}" th:text="Editar" class="btn btn-warning" ></a></td>
+        <td><a th:href="@{/eliminar/} + ${persona.Id}" th:text="Eliminar" th:type="post" class="btn btn-danger"></a></td>
+    </tr>
+    </div>
+</div>
+
+</table>
+<div>
+    <a th:href="@{/agregar}" class="btn btn-primary">Crear Persona</a>
+</div>
+
+</body>
+</html>
